@@ -14,14 +14,14 @@ app.listen(3000, () => {
 
 
 //Connects to log.csv
-/*const logPath = path.join(__dirname, 'log.csv');
+const logPath = path.join(__dirname, 'log.csv');
 const logStream = fs.createWriteStream(logPath, {flags: 'a'});
 if (fs.existsSync(logPath) && fs.statSync(logPath).size === 0) { //Writes CSV header if log is empty
     logStream.write('Agent, Time, Method, Resource, Version, Status\n');
-}*/
+}
 
 //Logging middleware
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
     console.log('Incoming request for:', req.originalUrl);
     const start = new Date();
 
@@ -39,22 +39,22 @@ if (fs.existsSync(logPath) && fs.statSync(logPath).size === 0) { //Writes CSV he
     });
 
     next();
-}); */
+});
 
-/*morgan.token('user-agent', (req) => req.header('User-Agent'));
+morgan.token('user-agent', (req) => req.header('User-Agent'));
 morgan.token('time', () => new Date().toISOString());
 morgan.token('method', (req) => req.method);
 morgan.token('resource', (req) => req.originalUrl);
 morgan.token('version', (req) => `HTTP/${req.httpVersion}`);
 const logFormat = ':user-agent|:time|:method|:resource|:version|:status\n';
-app.use(morgan(logFormat, {stream:logStream}));*/
+app.use(morgan(logFormat, {stream:logStream}));
 
 /*app.get('/', (req, res) => {
     res.status(200).send('Ok')
 }) */
 
 //returns JSON object
-/*app.get('/logs', (req, res) => {
+app.get('/logs', (req, res) => {
     fs.readFile(logPath, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).json({error: 'Failed to read log file'});
@@ -87,7 +87,7 @@ app.use(morgan(logFormat, {stream:logStream}));*/
         Resource: resource,
         Version: version,
         Status: status,
-    });
-}); */
+    }); */
+});
 
 module.exports = app;
