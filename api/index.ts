@@ -1,5 +1,5 @@
 const express = require("express");
-const server = require('../server/app.js');
+//const server = require('../server/app.js');
 const morgan = require('morgan');
 const path = require('path')
 const fs = require('fs');
@@ -7,7 +7,7 @@ const app = express();
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
-server.listen(3000, () => {
+app.listen(3000, () => {
   console.log('server is listening on http://localhost:3000');
 })
 
@@ -21,7 +21,7 @@ if (fs.existsSync(logPath) && fs.statSync(logPath).size === 0) { //Writes CSV he
 }
 
 //Logging middleware
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
     console.log('Incoming request for:', req.originalUrl);
     const start = new Date();
 
@@ -39,7 +39,7 @@ app.use((req, res, next) => {
     });
 
     next();
-}); 
+}); */
 
 /*morgan.token('user-agent', (req) => req.header('User-Agent'));
 morgan.token('time', () => new Date().toISOString());
@@ -49,12 +49,12 @@ morgan.token('version', (req) => `HTTP/${req.httpVersion}`);
 const logFormat = ':user-agent|:time|:method|:resource|:version|:status\n';
 app.use(morgan(logFormat, {stream:logStream}));*/
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
     res.status(200).send('Ok')
-})
+}) */
 
 //returns JSON object
-app.get('/logs', (req, res) => {
+/*app.get('/logs', (req, res) => {
     fs.readFile(logPath, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).json({error: 'Failed to read log file'});
@@ -87,7 +87,7 @@ app.get('/logs', (req, res) => {
         Resource: resource,
         Version: version,
         Status: status,
-    });*/
-});
+    });
+}); */
 
 module.exports = app;
