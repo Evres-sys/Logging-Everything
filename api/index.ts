@@ -14,11 +14,11 @@ app.listen(3000, () => {
 
 
 //Connects to log.csv
-const logPath = path.join(__dirname, 'log.csv');
+/*const logPath = path.join(__dirname, 'log.csv');
 const logStream = fs.createWriteStream(logPath, {flags: 'a'});
 if (fs.existsSync(logPath) && fs.statSync(logPath).size === 0) { //Writes CSV header if log is empty
     logStream.write('Agent, Time, Method, Resource, Version, Status\n');
-}
+}*/
 
 //Logging middleware
 /*app.use((req, res, next) => {
